@@ -11,7 +11,6 @@ public class CreateThreadDemo {
 
     //Empty Thread
     public static  void emptyThreadInfo(){
-
         Thread thread = new Thread();
 
 
