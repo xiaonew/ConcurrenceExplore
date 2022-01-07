@@ -17,21 +17,25 @@ public class StateDemo {
 
         // ================================start & waiting_timeout & blocking状态===================================
 
+
+        System.out.println("\n\n======================（Start Sleep join synchronized 状态 ）======================");
+
         thread1.start();
         Thread.sleep(1000L);
+        System.out.println("线程(SLEEP)状态 ：" + thread1.getName() + " -" + thread1.getState());
         thread2.start();
         Thread.sleep(1000L);
-        System.out.println("创建线程(NEW)状态 ：" + thread1.getName() + " -" + thread1.getState());
-        System.out.println("创建线程(进入synchronized)状态 ：" + thread2.getName() + " -" + thread2.getState());
+        System.out.println("线程(进入synchronized)状态 ：" + thread2.getName() + " -" + thread2.getState());
+
 
         Thread.sleep(10000L);
-        System.out.println("创建线程运行结束状态 ：" + thread1.getName() + " -" + thread1.getState());
-        System.out.println("创建线程运行结束状态 ：" + thread2.getName() + " -" + thread2.getState());
+        System.out.println("线程运行结束状态 ：" + thread1.getName() + " -" + thread1.getState());
+        System.out.println("线程(SLEEP)状态 ：" + thread2.getName() + " -" + thread2.getState());
 
         thread1.join();
         thread2.join();
-        System.out.println("创建线程运行结束状态 ：" + thread1.getName() + " -" + thread1.getState());
-        System.out.println("创建线程运行结束状态 ：" + thread2.getName() + " -" + thread2.getState());
+        System.out.println("线程运行结束状态 ：" + thread1.getName() + " -" + thread1.getState());
+        System.out.println("线程运行结束状态 ：" + thread2.getName() + " -" + thread2.getState());
 
 
 
