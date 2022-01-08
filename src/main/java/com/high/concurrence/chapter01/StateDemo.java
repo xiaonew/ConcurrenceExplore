@@ -7,6 +7,8 @@ public class StateDemo {
 
     public static void main(String[] args) throws InterruptedException {
 
+        System.out.println("======================（Start Sleep join synchronized 状态 ）======================");
+
         StatePrinter statePrinter = new StatePrinter();
         //线程NEW 状态
         Thread thread1 = new Thread(statePrinter, "thread-1");
@@ -15,10 +17,6 @@ public class StateDemo {
         System.out.println("创建线程(NEW)状态 ：" + thread1.getName() + " -" + thread1.getState());
         System.out.println("创建线程(NEW)状态 ：" + thread2.getName() + " -" + thread2.getState());
 
-        // ================================start & waiting_timeout & blocking状态===================================
-
-
-        System.out.println("\n\n======================（Start Sleep join synchronized 状态 ）======================");
 
         thread1.start();
         Thread.sleep(1000L);
@@ -38,10 +36,6 @@ public class StateDemo {
         System.out.println("线程运行结束状态 ：" + thread2.getName() + " -" + thread2.getState());
 
 
-
-
-
-
     }
 
     static class StatePrinter implements Runnable {
@@ -49,6 +43,8 @@ public class StateDemo {
         @Override
         public void run() {
             System.out.println("Start线程后状态 ：" + Thread.currentThread().getName() + " -" + Thread.currentThread().getState());
+            Thread.currentThread().yield();
+            System.out.println("线程（yield）后状态 ：" + Thread.currentThread().getName() + " -" + Thread.currentThread().getState());
             synchronized (this) {
                 try {
                     //sleep  10S
