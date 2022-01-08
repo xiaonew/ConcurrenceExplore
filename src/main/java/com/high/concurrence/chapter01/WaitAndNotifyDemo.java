@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * wait And Notify 案例
  * 一般用于生产 - 消费 模式
  * <p>
- * 生产速率大于消费速度，当队列中个数大于 10 ，producer就wait ,当 队列小于2 ，notify producer 生产
+ * 生产速率大于消费速度，当队列中个数大于 5 ，producer就wait ,当 队列小于2 ，notify producer 生产
  */
 public class WaitAndNotifyDemo {
 
@@ -24,13 +24,13 @@ public class WaitAndNotifyDemo {
         List<Thread> threadList = new ArrayList<>();
 
         //两个生产者 两个消费者
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 1; i++) {
             Thread thread = new Thread(new Producer(), "producer - " + i);
             threadList.add(thread);
             thread.start();
         }
 
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 1; i++) {
             Thread thread = new Thread(new Consumer(), "consumer - " + i);
             threadList.add(thread);
             thread.start();
@@ -126,7 +126,7 @@ public class WaitAndNotifyDemo {
 
                 //消费
                 Goods goods = stores.poll();
-                System.out.println("消费了 : " + goods.name);
+                System.out.println(Thread.currentThread().getName()+" 消费了 : " + goods.name);
                 //消费一次休息1S
                 try {
                     Thread.sleep(1000L);
